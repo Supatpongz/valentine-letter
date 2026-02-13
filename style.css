@@ -389,4 +389,85 @@ h1 {
   backdrop-filter: blur(6px);
 }
 
+/* =========================
+   RESPONSIVE PATCH (MOBILE)
+   Put this at the VERY END
+   ========================= */
+
+.letter-window{
+  width: min(92vw, 900px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+/* ให้เนื้อหาอยู่ในกรอบเสมอ */
+.letter-content{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  /* ลด padding ลงให้พอดีมือถือ */
+  padding-top: clamp(55px, 9vw, 95px);
+  padding-left: clamp(20px, 6vw, 60px);
+  padding-right: clamp(20px, 6vw, 60px);
+  padding-bottom: clamp(20px, 6vw, 55px);
+}
+
+/* Title */
+#title{
+  font-size: clamp(18px, 5vw, 34px);
+}
+
+/* Cat */
+#cat-img{
+  width: clamp(110px, 28vw, 230px);
+  height: auto;
+}
+
+/* Question text */
+#quiz-question{
+  font-size: clamp(16px, 4.2vw, 26px);
+  line-height: 1.25;
+}
+
+/* Choices layout */
+#quiz-choices{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Mobile: เปลี่ยนเป็น 1 คอลัมน์ */
+@media (max-width: 520px){
+  #quiz-choices{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Choice buttons */
+.choice-btn{
+  font-size: clamp(16px, 4.4vw, 24px);
+  padding: 14px 16px;
+  border-radius: 16px;
+  width: 100%;
+}
+
+/* Input + Submit */
+input{
+  width: 100%;
+  max-width: 360px;
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+#submit-btn{
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+/* Music button - keep in frame */
+.music-btn{
+  top: clamp(18px, 5vw, 40px) !important;
+  right: clamp(18px, 5vw, 40px) !important;
+}
+
 
