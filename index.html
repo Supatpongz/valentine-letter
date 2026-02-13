@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Valentine Letter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Envelope Screen -->
+    <div id="envelope-container">
+      <img src="envelope.png" alt="Envelope" id="envelope" />
+      <p>♡ Letter for You ♡</p>
+    </div>
+
+    <!-- Letter Screen -->
+    <div id="letter-container">
+      <div class="letter-window">
+    
+            <!-- Music button -->
+      <button id="music-btn" class="music-btn" type="button">🔊</button>
+
+      <!-- Background music -->
+      <audio id="bg-music" loop preload="auto">
+        <source src="song.mp3" type="audio/mpeg" />
+      </audio>
+
+           
+        <div class="letter-content">
+        <h1 id="letter-title">Will you be my Valentine?</h1>
+
+        <img src="cat_heart.gif" class="cat" id="letter-cat" />
+
+        <!-- STEP 1: DATE INPUT -->
+        <div id="date-step" class="step-box" style="display: none">
+          <p class="step-text">ก่อนจะกดต่อ… ตอบคำถามสำคัญหน่อยย 🥺</p>
+          <p class="step-title">“What’s our song?”</p>
+
+      <div class="input-row">
+          <input
+            id="date-input"
+            class="answer-input"
+            type="text"
+            placeholder="เป็นเพลงที่เคยส่งให้"
+            autocomplete="off"
+          />
+
+          <button id="date-submit" class="submit-answer">Submit</button>
+      </div>
+
+          <p id="date-result" class="answer-result"></p>
+        </div>
+
+        <!-- STEP 2: QUIZ (Q1-Q3) -->
+        <div id="quiz-step" class="step-box" style="display: none">
+          <div class="quiz-box">
+          <p id="quiz-question" class="quiz-question"></p>
+          </div>
+          <div id="quiz-choices" class="quiz-choices"></div>
+
+          <p id="quiz-result" class="answer-result"></p>
+
+          <button id="next-question" class="submit-answer" style="display: none">
+            Next 💗
+          </button>
+        </div>
+
+        <!-- YES/NO (locked until finish quiz) -->
+        <div class="buttons" id="letter-buttons" style="display: none">
+          <img src="yes.png" class="btn yes-btn" alt="Yes" />
+
+          <div class="no-wrapper">
+            <img src="no.png" class="btn no-btn" alt="No" />
+          </div>
+        </div>
+
+        <p id="final-text" class="final-text" style="display: none">
+          <strong>Valentine Date:</strong> Meow Restaurant at 7pm. Dress fancy!
+        </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

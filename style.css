@@ -1,0 +1,392 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("heart-bg.jpg");
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+/* Envelope Screen */
+#envelope-container {
+  text-align: center;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#envelope {
+  width: 200px;
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+}
+
+#letter-container {
+  display: none;
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-window {
+  width: 90vw;
+  max-width: 800px;
+  aspect-ratio: 3/2;
+  padding: 20px 20px 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  background-image: url("window.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12px;
+  gap: 8px;
+  padding-top: 180px;
+
+  transform: scale(1.2);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-window.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+#envelope-container p{
+  font-size: 40px;
+}
+
+.letter-window p{
+  font-size: 16px;
+}
+
+/* Cat */
+.cat {
+  width: 180px;
+  margin: 4px 0;
+  transition: width 0.4s ease;
+}
+
+.letter-window.final .cat {
+  width: 180px;
+}
+
+/* buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  position: relative;
+}
+
+.no-wrapper {
+  position: relative;
+}
+
+.btn {
+  width: 120px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.yes-btn,
+.no-btn {
+  width: 120px;
+  height: auto;
+  display: inline-block;
+}
+
+.yes-btn {
+  position: relative;
+  z-index: 2;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.no-btn {
+  z-index: 1;
+  position: relative;
+  transition: transform 0.15s ease;
+  cursor: default;
+}
+
+.final-text {
+  font-size: 22px;
+  line-height: 1.4;
+  text-align: center;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgba(255, 240, 240, 0.5);
+  border-radius: 12px;
+}
+
+/* Step UI */
+.step-box {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.step-text {
+  font-size: 16px;
+  margin: 0;
+}
+
+.step-title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.answer-input {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 200, 200, 0.7);
+  font-size: 16px;
+  width: min(280px, 76vw);
+  outline: none;
+  text-align: center;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+.submit-answer {
+  margin-top: 4px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+.answer-result {
+  font-size: 16px;
+  margin: 0;
+  min-height: 20px;
+}
+
+/* Quiz */
+.quiz-question{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.quiz-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: min(520px, 86vw);
+  margin-top: 6px;
+}
+
+.choice-btn {
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 200, 200, 0.55);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+  transition: transform 0.15s ease;
+}
+
+.choice-btn:active {
+  transform: scale(0.98);
+}
+
+.choice-btn.selected {
+  border: 2px solid rgba(255, 90, 90, 0.7);
+  background: rgba(255, 220, 220, 0.75);
+}
+
+.music-btn{
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+  background: rgba(255,255,255,0.65);
+}
+
+/* ทำให้กรอบเป็น background เฉยๆ */
+.letter-window{
+  position: relative;
+}
+
+/* พื้นที่ด้านในจริงๆ ของกรอบ */
+.letter-content{
+  width: 100%;
+  height: 100%;
+
+  /* 🔥 ปรับตรงนี้คือหัวใจ */
+  padding-top: 95px;      /* ดันลงมาให้อยู่ในกรอบชมพู */
+  padding-bottom: 40px;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+/* มือถือ: ลด padding ข้างๆ */
+@media (max-width: 520px){
+  .letter-content{
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 85px;
+  }
+}
+
+/* Input + Submit in one row (Date step only) */
+.input-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: min(520px, 86vw);
+}
+
+/* ให้ input ไม่ยาวเกินไป */
+.input-row .answer-input{
+  width: 100%;
+  max-width: 240px;
+}
+
+/* ให้ปุ่มไม่ใหญ่เกิน */
+.input-row .submit-answer{
+  white-space: nowrap;
+  padding: 10px 16px;
+}
+
+/* ===== QUIZ MODE ===== */
+.letter-window.quiz-mode .cat{
+  position: absolute;
+  right: 55px;
+  bottom: 55px;
+  width: 110px;       /* ลดเฉพาะหน้า quiz */
+  margin: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* กล่องคำถาม */
+.quiz-box{
+  width: min(520px, 86vw);
+  padding: 14px 14px;
+  border-radius: 16px;
+
+  border: 2px solid rgba(255, 120, 120, 0.45);
+  background: rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(3px);
+}
+
+/* คำถามให้ชัดขึ้น */
+.quiz-question{
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.letter-window.quiz-mode h1{
+  font-size: 22px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.letter-window.quiz-mode .quiz-question{
+  font-size: 20px;   /* ตัวคำถาม */
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.letter-window.quiz-mode .choice-btn{
+  font-size: 18px;   /* ตัวเลือก */
+  padding: 12px 14px;
+}
+
+.letter-window.quiz-mode .answer-result{
+  font-size: 18px;   /* Okii / Only this */
+}
+
+/* Final text: keep inside the window */
+.letter-window.final .final-text{
+  position: absolute;
+
+  left: 85px;
+  right: 85px;
+  bottom: 85px;
+
+  margin: 0;
+}
+
+
+@media (max-width: 520px){
+  .letter-window.final .final-text{
+    left: 36px;
+    right: 36px;
+    bottom: 70px;
+  }
+}
+
+/* Music button */
+.letter-window{
+  position: relative;
+}
+
+.music-btn{
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 99999;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+
+  border: none;
+  cursor: pointer;
+
+  font-size: 18px;
+  font-family: "Pixelify Sans", sans-serif;
+
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(6px);
+}
+
+
